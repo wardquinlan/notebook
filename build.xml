@@ -11,7 +11,7 @@
   <property name="output" value="output"/>
   <property name="classes" value="classes"/>
   <tstamp>
-    <format property="tstamp" pattern="yyyy-MM-dd_HH:mm:ss"/>
+    <format property="tstamp" pattern="yyyyMMdd_HHmmss"/>
   </tstamp>
   <property name="version" value="Build_${tstamp}"/>
 
@@ -47,7 +47,7 @@
     <copy todir="${output}/${appname}.d">
       <fileset dir="${resources}" includes="*.properties"/>
     </copy>
-    <echo file="${output}/${appname}.d/notebook.properties">es.version=${version}${line.separator}</echo>
+    <echo file="${output}/${appname}.d/notebook.properties" append="true">notebook.version=${version}${line.separator}</echo>
     <chmod file="${output}/notebook.sh" perm="755"/>
     <chmod file="${output}/createdb.sh" perm="755"/>
     <chmod file="${output}/ddl.sh" perm="755"/>
