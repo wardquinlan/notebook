@@ -5,39 +5,39 @@ if [ `whoami` != 'postgres' ]; then
   exit 1
 fi
 
-if [ "$ES_DATABASE" = "" ]; then
-  echo $0: ES_DATABASE not defined
+if [ "$NB_DATABASE" = "" ]; then
+  echo $0: NB_DATABASE not defined
   exit 1
 fi
 
-if [ "$ES_USERNAME" = "" ]; then
-  echo $0: ES_USERNAME not defined
+if [ "$NB_USERNAME" = "" ]; then
+  echo $0: NB_USERNAME not defined
   exit 1
 fi
 
-if [ "$ES_PASSWORD" = "" ]; then
-  echo $0: ES_PASSWORD not defined
+if [ "$NB_PASSWORD" = "" ]; then
+  echo $0: NB_PASSWORD not defined
   exit 1
 fi
 
-echo $0: attempting to drop database \'$ES_DATABASE\'
-dropdb $ES_DATABASE 2>/dev/null
+echo $0: attempting to drop database \'$NB_DATABASE\'
+dropdb $NB_DATABASE 2>/dev/null
 if [ $? != 1 ]; then
-  echo $0: database \'$ES_DATABASE\' not found';' skipping drop
+  echo $0: database \'$NB_DATABASE\' not found';' skipping drop
 fi
 
-echo $0: attempting to create database \'$ES_DATABASE\'
-createdb $ES_DATABASE
+echo $0: attempting to create database \'$NB_DATABASE\'
+createdb $NB_DATABASE
 if [ $? != 0 ]; then
-  echo $0: could not create database \'$ES_DATABASE\'
+  echo $0: could not create database \'$NB_DATABASE\'
   exit 1
 fi
 
-echo $0: attempting to create user \'$ES_USERNAME\'
+echo $0: attempting to create user \'$NB_USERNAME\'
 psql << EOF
-  DROP USER IF EXISTS $ES_USERNAME;
-  CREATE USER $ES_USERNAME WITH PASSWORD '$ES_PASSWORD';
+  DROP USER IF EXISTS $NB_USERNAME;
+  CREATE USER $NB_USERNAME WITH PASSWORD '$NB_PASSWORD';
 EOF
 
-echo $0: database $ES_DATABASE created
+echo $0: database $NB_DATABASE created
 
