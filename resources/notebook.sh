@@ -5,7 +5,7 @@ if [ "$NB_HOME" == "" ]; then
   exit 1
 fi
 
-CLASSPATH=$ES_HOME/notebook.d
+CLASSPATH=$NB_HOME/notebook.d
 CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/notebook.jar
 CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/log4j-1.2.14.jar
 CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/commons-logging-1.1.jar
