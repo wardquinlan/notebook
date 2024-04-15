@@ -69,10 +69,10 @@ public class Main {
       }
     });
     
-    Controller controller = new Controller(dao);
-    Model model = new Model();
-    
     try {
+      Controller controller = new Controller(dao);
+      Model model = new Model();
+      controller.setModel(model);
       Frame frame = new Frame(controller, model);
       controller.setFrame(frame);
       frame.setVisible(true);
