@@ -15,7 +15,7 @@ public class Frame extends JFrame {
     super("Notebook - " + System.getProperty("notebook.version"));
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     getContentPane().setLayout(new BorderLayout());
-    add(new JButton("Push me"), BorderLayout.NORTH);
+    add(new FilterPanel(), BorderLayout.NORTH);
     add(new JPanel(), BorderLayout.CENTER);
     add(new JButton("Push me"), BorderLayout.SOUTH);
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
