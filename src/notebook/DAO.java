@@ -2,6 +2,7 @@ package notebook;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import org.apache.commons.logging.Log;
@@ -29,6 +30,13 @@ public class DAO {
   
   public void load(String filter) {
     // select * from notebook where UPPER(note) like UPPER('%myx%') or UPPER(title) like UPPER('%my%');
+  }
+  
+  public void addNote(String title, String note) throws Exception {
+    PreparedStatement ps = conn.prepareStatement("insert into notebook(ts, title, note) values(NOW(), ?, ?)");
+    ps.setString(1, title);
+    ps.setString(2, note);
+    ps.executeUpdate();
   }
   
 }

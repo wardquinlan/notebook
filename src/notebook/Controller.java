@@ -41,5 +41,10 @@ public class Controller {
   
   public void addNote(String title, String note) {
     log.info("adding note: " + title + "," + note);
+    try {
+      dao.addNote(title, note);
+    } catch(Exception e) {
+      log.error("could not add note", e);
+    }
   }
 }
