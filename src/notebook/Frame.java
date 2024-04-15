@@ -26,6 +26,5 @@ public class Frame extends JFrame {
     add(new JButton("Push me"), BorderLayout.SOUTH);
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setVisible(true);
   }
 }

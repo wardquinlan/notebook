@@ -8,12 +8,33 @@ import org.apache.commons.logging.LogFactory;
 public class Controller {
   private static final Log log = LogFactory.getFactory().getInstance(Controller.class);
   private JFrame frame;
+  private DAO dao;
   private Model model;
+  
+  public Controller(DAO dao) {
+    this.dao = dao;
+  }
   
   public void applyFilter(String filter) {
     log.info("applying filter with text " + filter);
   }
   
+  public JFrame getFrame() {
+    return frame;
+  }
+
+  public void setFrame(JFrame frame) {
+    this.frame = frame;
+  }
+
+  public Model getModel() {
+    return model;
+  }
+
+  public void setModel(Model model) {
+    this.model = model;
+  }
+
   public void addNote() {
     
   }

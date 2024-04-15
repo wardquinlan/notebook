@@ -69,10 +69,13 @@ public class Main {
       }
     });
     
+    Controller controller = new Controller(dao);
     Model model = new Model();
-    Controller controller = new Controller();
+    
     try {
-      new Frame(controller, model);
+      Frame frame = new Frame(controller, model);
+      controller.setFrame(frame);
+      frame.setVisible(true);
     } catch(Exception e) {
       log.fatal("could not launch frame", e);
       System.exit(1);
