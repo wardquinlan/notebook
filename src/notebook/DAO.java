@@ -2,6 +2,7 @@ package notebook;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,9 +12,6 @@ public class DAO {
   private Connection conn;
   
   public void connect(String host, String database, String username, String password) throws Exception {
-    if (conn != null) {
-      throw new Exception("already connected to datastore");
-    }
     Class.forName("org.postgresql.Driver");
     String url = "jdbc:postgresql://" + host + "/" + database + "?user=" + username;
     log.info("connecting to database using " + url);
@@ -21,6 +19,12 @@ public class DAO {
       url = url + "&password=" + password;
     }
     conn = DriverManager.getConnection(url);  
+  }
+  
+  public void close() throws Exception {
+    if (conn != null) {
+      conn.close();
+    }
   }
   
   public void load(String filter) {
