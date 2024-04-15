@@ -1,8 +1,11 @@
 package notebook;
 
+import java.awt.BorderLayout;
 import java.awt.Toolkit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 public class Frame extends JFrame {
@@ -11,6 +14,10 @@ public class Frame extends JFrame {
   public Frame() throws Exception {
     super("Notebook - " + System.getProperty("notebook.version"));
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    getContentPane().setLayout(new BorderLayout());
+    add(new JButton("Push me"), BorderLayout.NORTH);
+    add(new JPanel(), BorderLayout.CENTER);
+    add(new JButton("Push me"), BorderLayout.SOUTH);
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
     setVisible(true);
   }
