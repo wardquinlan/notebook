@@ -23,7 +23,8 @@ public class Main {
         System.exit(1);
       }
       
-      new Frame();
+      Controller controller = new Controller();
+      new Frame(controller);
     } catch(Exception e) {
       log.error(e);
       System.exit(1);
