@@ -23,4 +23,8 @@ public class DAO {
     conn = DriverManager.getConnection(url);  
   }
   
+  public void load(String filter) {
+    // select * from notebook where UPPER(note) like UPPER('%myx%') or UPPER(title) like UPPER('%my%');
+  }
+  
 }
