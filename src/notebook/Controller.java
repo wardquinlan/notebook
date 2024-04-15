@@ -36,6 +36,10 @@ public class Controller {
   }
 
   public void addNote() {
-    
+    new NoteDialog(frame, this);
+  }
+  
+  public void addNote(String title, String note) {
+    log.info("adding note: " + title + "," + note);
   }
 }
