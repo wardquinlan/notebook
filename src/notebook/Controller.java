@@ -43,6 +43,8 @@ public class Controller {
     log.info("adding note: " + title + "," + note);
     try {
       dao.addNote(title, note);
+      Note n = dao.getLast();
+      
     } catch(Exception e) {
       log.error("could not add note", e);
     }

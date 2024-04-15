@@ -3,7 +3,7 @@ package notebook;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,5 +38,18 @@ public class DAO {
     ps.setString(2, note);
     ps.executeUpdate();
   }
-  
+
+  public Note getLast() throws Exception {
+    PreparedStatement ps = conn.prepareStatement("select id, ts, title, note from notebook where id = (select MAX(id) from notebook)");
+    ResultSet resultSet = ps.executeQuery();
+    if (!resultSet.next()) {
+      return null;
+    }
+    Note note = new Note();
+    note.setId(resultSet.getInt(1));
+    note.setTimestamp(resultSet.getDate(2));
+    note.setTitle(resultSet.getString(3));
+    note.setNote(resultSet.getString(4));
+    return note;
+  }
 }
