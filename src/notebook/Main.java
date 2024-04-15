@@ -24,7 +24,8 @@ public class Main {
       }
       
       Controller controller = new Controller();
-      new Frame(controller);
+      Model model = new Model();
+      new Frame(controller, model);
     } catch(Exception e) {
       log.error(e);
       System.exit(1);
