@@ -47,7 +47,7 @@ public class DAO {
     }
     Note note = new Note();
     note.setId(resultSet.getInt(1));
-    note.setTimestamp(resultSet.getDate(2));
+    note.setTimestamp(resultSet.getTimestamp(2));
     note.setTitle(resultSet.getString(3));
     note.setNote(resultSet.getString(4));
     return note;

@@ -1,5 +1,7 @@
 package notebook;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Model extends DefaultTableModel {
   private static final long serialVersionUID = -3950929583108303584L;
   private static final Log log = LogFactory.getFactory().getInstance(Model.class);
   private List<Note> list = new ArrayList<>();
+  private static final DateFormat DF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
   
   @Override
   public String getColumnName(int column) {
@@ -45,7 +48,7 @@ public class Model extends DefaultTableModel {
     case 0:
       return note.getId();
     case 1:
-      return note.getTimestamp();
+      return DF.format(note.getTimestamp());
     case 2:
       return note.getTitle();
     default:
