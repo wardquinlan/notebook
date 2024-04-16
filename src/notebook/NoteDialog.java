@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -24,13 +26,21 @@ public class NoteDialog extends JDialog {
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new BorderLayout());
     JTextField title = new JTextField(20);
+    JButton ok = new JButton("OK");
+    ok.setEnabled(false);
+    JButton cancel = new JButton("Cancel");
+    title.addKeyListener(new KeyAdapter() {
+      @Override
+      public void keyReleased(KeyEvent e) {
+        ok.setEnabled(title.getText().length() > 0);
+      }
+    });
     mainPanel.add(new LabeledComponent("Title", title), BorderLayout.NORTH);
     JTextArea note = new JTextArea();
     mainPanel.add(new LabeledComponent("Note", note), BorderLayout.CENTER);
     mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(mainPanel, BorderLayout.CENTER);
     
-    JButton ok = new JButton("OK");
     ok.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -40,7 +50,7 @@ public class NoteDialog extends JDialog {
         dispose();
       }
     });
-    JButton cancel = new JButton("Cancel");
+    
     cancel.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
