@@ -30,6 +30,7 @@ public class Frame extends JFrame {
     splitPane.setBottomComponent(new JPanel());
     add(splitPane, BorderLayout.CENTER);
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
+    splitPane.setDividerLocation((int) (getHeight() * 0.7));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 }
