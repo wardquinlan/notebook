@@ -44,7 +44,7 @@ public class Controller {
     try {
       dao.addNote(title, note);
       Note n = dao.getLast();
-      
+      model.add(n);
     } catch(Exception e) {
       log.error("could not add note", e);
     }
