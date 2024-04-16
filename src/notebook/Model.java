@@ -43,11 +43,11 @@ public class Model extends DefaultTableModel {
     Note note = list.get(row);
     switch (column) {
     case 0:
-      return "0";
+      return note.getId();
     case 1:
-      return "1";
+      return note.getTimestamp();
     case 2:
-      return "2";
+      return note.getTitle();
     default:
       log.error("unexpected column: " + column);
       return null;
