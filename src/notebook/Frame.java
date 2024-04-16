@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 
 public class Frame extends JFrame {
@@ -25,9 +27,13 @@ public class Frame extends JFrame {
     getContentPane().setLayout(new BorderLayout());
     add(new FilterPanel(controller), BorderLayout.NORTH);
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    JScrollPane scrollPane = new JScrollPane(new JTable(model));
+    JTable table = new JTable(model);
+    table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    JScrollPane scrollPane = new JScrollPane(table);
     splitPane.setTopComponent(scrollPane);
-    splitPane.setBottomComponent(new JPanel());
+    JTextArea textArea = new JTextArea();
+    textArea.setEnabled(false);
+    splitPane.setBottomComponent(textArea);
     add(splitPane, BorderLayout.CENTER);
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
     splitPane.setDividerLocation((int) (getHeight() * 0.7));
