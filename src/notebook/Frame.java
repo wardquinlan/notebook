@@ -5,7 +5,9 @@ import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
@@ -22,8 +24,11 @@ public class Frame extends JFrame {
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     getContentPane().setLayout(new BorderLayout());
     add(new FilterPanel(controller), BorderLayout.NORTH);
-    add(new JScrollPane(new JTable(model)), BorderLayout.CENTER);
-    add(new JButton("Push me"), BorderLayout.SOUTH);
+    JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+    JScrollPane scrollPane = new JScrollPane(new JTable(model));
+    splitPane.setTopComponent(scrollPane);
+    splitPane.setBottomComponent(new JPanel());
+    add(splitPane, BorderLayout.CENTER);
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
