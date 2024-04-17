@@ -36,7 +36,7 @@ public class DAO {
     if ("".equals(filter)) {
       ps = conn.prepareStatement("select * from notebook order by id desc");
     } else {
-      ps = conn.prepareStatement("select * from notebook where upper(title) like upper(?) or upper(note) like upper(?) order by id desc");
+      ps = conn.prepareStatement("select * from notebook where upper(title) like upper('%' || ? || '%') or upper(note) like upper('%' || ? || '%') order by id desc");
       ps.setString(1, filter);
       ps.setString(2, filter);
     }
