@@ -8,12 +8,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class Table extends JTable {
   private static final long serialVersionUID = 3882178188030656062L;
-  private Controller controller;
+  private Frame frame;
   private Model model;
 
-  public Table(Controller controller, Model model) {
+  public Table(Frame frame, Model model) {
     super(model);
-    this.controller = controller;
+    this.frame = frame;
     this.model = model;
     setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     
@@ -38,9 +38,9 @@ public class Table extends JTable {
     super.valueChanged(e);
     int index = getSelectedRow();
     if (index == -1) {
-      controller.setNoteText("");
+      frame.setText("");
     } else {
-      controller.setNoteText(model.get(index).getText());
+      frame.setText(model.get(index).getText());
     }
   }
 }

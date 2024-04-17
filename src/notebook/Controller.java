@@ -13,6 +13,14 @@ public class Controller {
     this.dao = dao;
   }
   
+  public void setFrame(Frame frame) {
+    this.frame = frame;
+  }
+
+  public void setModel(Model model) {
+    this.model = model;
+  }
+  
   public void search(String filter) {
     log.info("searching: " + filter);
     try {
@@ -20,26 +28,6 @@ public class Controller {
     } catch(Exception e) {
       log.error("could not search against filter", e);
     }
-  }
-  
-  public void clear() {
-    model.clear();
-  }
-  
-  public Frame getFrame() {
-    return frame;
-  }
-
-  public void setFrame(Frame frame) {
-    this.frame = frame;
-  }
-
-  public Model getModel() {
-    return model;
-  }
-
-  public void setModel(Model model) {
-    this.model = model;
   }
   
   public void add(String title, String note) {
@@ -73,9 +61,5 @@ public class Controller {
     } catch(Exception e) {
       log.error("could not delete", e);
     }
-  }
-  
-  public void setNoteText(String text) {
-    frame.setText(text);
   }
 }

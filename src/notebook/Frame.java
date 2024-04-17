@@ -25,7 +25,7 @@ public class Frame extends JFrame {
     
     add(new FilterPanel(this, controller, model), BorderLayout.NORTH);
     
-    table = new Table(controller, model);
+    table = new Table(this, model);
     JScrollPane scrollPane = new JScrollPane(table);
     scrollPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
