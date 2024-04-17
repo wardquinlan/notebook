@@ -15,6 +15,11 @@ public class Controller {
   
   public void search(String filter) {
     log.info("searching with text " + filter);
+    try {
+      model.set(dao.search(filter));
+    } catch(Exception e) {
+      log.error("could not search against filter", e);
+    }
   }
   
   public Frame getFrame() {

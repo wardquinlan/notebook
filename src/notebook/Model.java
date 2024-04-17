@@ -69,5 +69,13 @@ public class Model extends DefaultTableModel {
   public void clear() {
     list.clear();
   }
+  
+  public void set(List<Note> list) {
+    this.list.clear();
+    for (Note note: list) {
+      this.list.add(note);
+    }
+    fireTableDataChanged();
+  }
 }
 

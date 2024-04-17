@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,7 +30,26 @@ public class DAO {
     }
   }
   
-  public void load(String filter) {
+  public List<Note> search(String filter) throws Exception {
+    List<Note> list = new ArrayList<>();
+    PreparedStatement ps;
+    if ("".equals(filter)) {
+      ps = conn.prepareStatement("select * from notebook order by id desc");
+    } else {
+      ps = conn.prepareStatement("select * from notebook where upper(title) like upper(?) or upper(note) like upper(?) order by id desc");
+      ps.setString(1, filter);
+      ps.setString(2, filter);
+    }
+    ResultSet resultSet = ps.executeQuery();
+    while (resultSet.next()) {
+      Note note = new Note();
+      note.setId(resultSet.getInt(1));
+      note.setTimestamp(resultSet.getTimestamp(2));
+      note.setTitle(resultSet.getString(3));
+      note.setText(resultSet.getString(4));
+      list.add(note);
+    }
+    return list;
     // select * from notebook where UPPER(note) like UPPER('%myx%') or UPPER(title) like UPPER('%my%');
   }
   
