@@ -6,7 +6,7 @@ public class Note {
   private Integer id;
   private Date timestamp;
   private String title;
-  private String note;
+  private String text;
   
   public Integer getId() {
     return id;
@@ -32,11 +32,11 @@ public class Note {
     this.title = title;
   }
 
-  public String getNote() {
-    return note;
+  public String getText() {
+    return text;
   }
 
-  public void setNote(String note) {
-    this.note = note;
+  public void setText(String text) {
+    this.text = text;
   }
 }

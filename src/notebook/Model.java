@@ -61,5 +61,9 @@ public class Model extends DefaultTableModel {
   public int getColumnCount() {
     return 3;
   }
+  
+  public Note get(int index) {
+    return list.get(index);
+  }
 }
 

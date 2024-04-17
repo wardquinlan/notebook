@@ -1,13 +1,11 @@
 package notebook;
 
-import javax.swing.JFrame;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 public class Controller {
   private static final Log log = LogFactory.getFactory().getInstance(Controller.class);
-  private JFrame frame;
+  private Frame frame;
   private DAO dao;
   private Model model;
   
@@ -19,11 +17,11 @@ public class Controller {
     log.info("applying filter with text " + filter);
   }
   
-  public JFrame getFrame() {
+  public Frame getFrame() {
     return frame;
   }
 
-  public void setFrame(JFrame frame) {
+  public void setFrame(Frame frame) {
     this.frame = frame;
   }
 
@@ -48,5 +46,9 @@ public class Controller {
     } catch(Exception e) {
       log.error("could not add note", e);
     }
+  }
+  
+  public void setNoteText(String text) {
+    frame.setNoteText(text);
   }
 }

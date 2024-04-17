@@ -49,7 +49,7 @@ public class DAO {
     note.setId(resultSet.getInt(1));
     note.setTimestamp(resultSet.getTimestamp(2));
     note.setTitle(resultSet.getString(3));
-    note.setNote(resultSet.getString(4));
+    note.setText(resultSet.getString(4));
     return note;
   }
 }
