@@ -1,8 +1,10 @@
 package notebook;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class Table extends JTable {
   private static final long serialVersionUID = 3882178188030656062L;
@@ -14,8 +16,14 @@ public class Table extends JTable {
     this.controller = controller;
     this.model = model;
     setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    
+    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+    centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+    getColumnModel().getColumn(0).setCellRenderer(centerRenderer);    
     getColumnModel().getColumn(0).setPreferredWidth(60);
     getColumnModel().getColumn(0).setMaxWidth(60);
+    getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
     getColumnModel().getColumn(1).setPreferredWidth(200);
     getColumnModel().getColumn(1).setMaxWidth(200);
   }
