@@ -38,11 +38,19 @@ public class Controller {
     this.model = model;
   }
 
-  public void addNote() {
+  public void add() {
     new NoteDialog(frame, this);
   }
   
-  public void addNote(String title, String note) {
+  public void edit() {
+    
+  }
+  
+  public void delete() {
+    
+  }
+  
+  public void add(String title, String note) {
     log.info("adding note: " + title + "," + note);
     try {
       dao.addNote(title, note);

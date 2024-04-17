@@ -39,7 +39,7 @@ public class NoteDialog extends JDialog {
           JOptionPane.showMessageDialog(frame, "A title is required", "Error", JOptionPane.ERROR_MESSAGE);
           return;
         }
-        controller.addNote(title.getText(), textArea.getText());
+        controller.add(title.getText(), textArea.getText());
         dispose();
       }
     });
