@@ -22,6 +22,10 @@ public class Controller {
     }
   }
   
+  public void reset() {
+    model.clear();
+  }
+  
   public Frame getFrame() {
     return frame;
   }

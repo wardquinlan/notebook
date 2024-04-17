@@ -33,6 +33,7 @@ public class FilterPanel extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
         filter.setText("");
+        controller.reset();
       }
     });
     add(reset);
