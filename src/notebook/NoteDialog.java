@@ -36,8 +36,8 @@ public class NoteDialog extends JDialog {
       }
     });
     mainPanel.add(new LabeledComponent("Title", title), BorderLayout.NORTH);
-    JTextArea note = new JTextArea();
-    mainPanel.add(new LabeledComponent("Note", note), BorderLayout.CENTER);
+    JTextArea textArea = new JTextArea();
+    mainPanel.add(new LabeledComponent("Note", textArea), BorderLayout.CENTER);
     mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(mainPanel, BorderLayout.CENTER);
     
@@ -45,8 +45,8 @@ public class NoteDialog extends JDialog {
       @Override
       public void actionPerformed(ActionEvent e) {
         title.getText();
-        note.getText();
-        controller.addNote(title.getText(), note.getText());
+        textArea.getText();
+        controller.addNote(title.getText(), textArea.getText());
         dispose();
       }
     });
