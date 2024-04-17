@@ -3,6 +3,7 @@ package notebook;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
@@ -62,8 +63,9 @@ public class Model extends DefaultTableModel {
     fireTableDataChanged();
   }
   
-  public void edit(int index, String title, String text) {
+  public void edit(int index, Date timestamp, String title, String text) {
     Note note = list.get(index);
+    note.setTimestamp(timestamp);
     note.setTitle(title);
     note.setText(text);
     fireTableDataChanged();

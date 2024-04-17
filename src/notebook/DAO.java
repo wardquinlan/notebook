@@ -74,6 +74,21 @@ public class DAO {
     ps.executeUpdate();
   }
   
+  public Note get(int id) throws Exception {
+    PreparedStatement ps = conn.prepareStatement("select id, ts, title, note from notebook where id = ?");
+    ps.setInt(1, id);
+    ResultSet resultSet = ps.executeQuery();
+    if (!resultSet.next()) {
+      return null;
+    }
+    Note note = new Note();
+    note.setId(resultSet.getInt(1));
+    note.setTimestamp(resultSet.getTimestamp(2));
+    note.setTitle(resultSet.getString(3));
+    note.setText(resultSet.getString(4));
+    return note;
+  }
+
   public Note getLast() throws Exception {
     PreparedStatement ps = conn.prepareStatement("select id, ts, title, note from notebook where id = (select MAX(id) from notebook)");
     ResultSet resultSet = ps.executeQuery();

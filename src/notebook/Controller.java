@@ -58,7 +58,8 @@ public class Controller {
     log.info("editing: " + id + ", " + title);
     try {
       dao.edit(id, title, text);
-      model.edit(frame.getSelectedRow(), title, text);
+      Note note = dao.get(id);
+      model.edit(frame.getSelectedRow(), note.getTimestamp(), note.getTitle(), note.getText());
     } catch(Exception e) {
       log.error("could not edit", e);
     }
