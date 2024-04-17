@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -26,37 +27,33 @@ public class NoteDialog extends JDialog {
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new BorderLayout());
     JTextField title = new JTextField(20);
-    JButton ok = new JButton("OK");
-    ok.setEnabled(false);
-    JButton cancel = new JButton("Cancel");
-    title.addKeyListener(new KeyAdapter() {
-      @Override
-      public void keyReleased(KeyEvent e) {
-        ok.setEnabled(title.getText().length() > 0);
-      }
-    });
     mainPanel.add(new LabeledComponent("Title", title), BorderLayout.NORTH);
     JTextArea textArea = new JTextArea();
     mainPanel.add(new LabeledComponent("Note", textArea), BorderLayout.CENTER);
     mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(mainPanel, BorderLayout.CENTER);
     
+    JButton ok = new JButton("OK");
     ok.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        title.getText();
-        textArea.getText();
+        if (title.getText().length() == 0) {
+          JOptionPane.showMessageDialog(frame, "A title is required", "Error", JOptionPane.ERROR_MESSAGE);
+          return;
+        }
         controller.addNote(title.getText(), textArea.getText());
         dispose();
       }
     });
     
+    JButton cancel = new JButton("Cancel");
     cancel.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         dispose();
       }
     });
+
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(ok);
     buttonPanel.add(cancel);
