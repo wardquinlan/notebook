@@ -18,6 +18,7 @@ public class Table extends JTable {
   
   @Override
   public void valueChanged(ListSelectionEvent e) {
+    super.valueChanged(e);
     int index = e.getFirstIndex();
     controller.setNoteText(model.get(index).getText());
   }
