@@ -19,6 +19,11 @@ public class Table extends JTable {
   @Override
   public void valueChanged(ListSelectionEvent e) {
     super.valueChanged(e);
-    controller.setNoteText(model.get(getSelectedRow()).getText());
+    int index = getSelectedRow();
+    if (index == -1) {
+      controller.setNoteText("");
+    } else {
+      controller.setNoteText(model.get(index).getText());
+    }
   }
 }

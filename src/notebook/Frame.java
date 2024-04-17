@@ -10,6 +10,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class Frame extends JFrame {
   private static final long serialVersionUID = 4319336198324776603L;
@@ -19,6 +20,7 @@ public class Frame extends JFrame {
     super("Notebook - " + System.getProperty("notebook.version"));
     textArea.setEnabled(false);
     textArea.setDisabledTextColor(Color.BLACK);
+    textArea.setBorder(new EmptyBorder(5, 5, 5, 5));
     
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     getContentPane().setLayout(new BorderLayout());
@@ -27,6 +29,7 @@ public class Frame extends JFrame {
     
     JTable table = new Table(controller, model);
     JScrollPane scrollPane = new JScrollPane(table);
+    scrollPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     splitPane.setDividerLocation((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.7));
     splitPane.setTopComponent(scrollPane);
