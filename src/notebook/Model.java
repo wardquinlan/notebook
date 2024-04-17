@@ -62,6 +62,11 @@ public class Model extends DefaultTableModel {
     return 3;
   }
   
+  public void delete(int index) {
+    list.remove(index);
+    fireTableDataChanged();
+  }
+  
   public Note get(int index) {
     return list.get(index);
   }

@@ -43,12 +43,16 @@ public class Frame extends JFrame {
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
-  
-  public void setNoteText(String text) {
+
+  public void setText(String text) {
     textArea.setText(text);
   }
   
-  public void setSelected(int index) {
+  public int getSelectedRow() {
+    return table.getSelectedRow();
+  }
+
+  public void setSelectedRow(int index) {
     table.setRowSelectionInterval(index, index);
   }
 }

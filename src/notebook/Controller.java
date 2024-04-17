@@ -51,7 +51,7 @@ public class Controller {
   }
   
   public void delete() {
-    
+    model.delete(frame.getSelectedRow());
   }
   
   public void add(String title, String note) {
@@ -60,13 +60,13 @@ public class Controller {
       dao.addNote(title, note);
       model.clear();
       model.add(dao.getLast());
-      frame.setSelected(0);
+      frame.setSelectedRow(0);
     } catch(Exception e) {
       log.error("could not add note", e);
     }
   }
   
   public void setNoteText(String text) {
-    frame.setNoteText(text);
+    frame.setText(text);
   }
 }
