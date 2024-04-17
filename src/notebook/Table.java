@@ -29,6 +29,11 @@ public class Table extends JTable {
   }
   
   @Override
+  public boolean isCellEditable(int row, int column) {
+    return false;
+  }
+  
+  @Override
   public void valueChanged(ListSelectionEvent e) {
     super.valueChanged(e);
     int index = getSelectedRow();
