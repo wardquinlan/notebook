@@ -14,6 +14,10 @@ public class Table extends JTable {
     this.controller = controller;
     this.model = model;
     setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    getColumnModel().getColumn(0).setPreferredWidth(60);
+    getColumnModel().getColumn(0).setMaxWidth(60);
+    getColumnModel().getColumn(1).setPreferredWidth(200);
+    getColumnModel().getColumn(1).setMaxWidth(200);
   }
   
   @Override
