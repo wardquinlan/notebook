@@ -1,6 +1,7 @@
 package notebook;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -17,6 +18,7 @@ public class Frame extends JFrame {
   public Frame(Controller controller, Model model) throws Exception {
     super("Notebook - " + System.getProperty("notebook.version"));
     textArea.setEnabled(false);
+    textArea.setDisabledTextColor(Color.BLACK);
     
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     getContentPane().setLayout(new BorderLayout());
