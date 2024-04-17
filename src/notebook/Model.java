@@ -65,5 +65,9 @@ public class Model extends DefaultTableModel {
   public Note get(int index) {
     return list.get(index);
   }
+  
+  public void clear() {
+    list.clear();
+  }
 }
 

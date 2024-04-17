@@ -41,8 +41,9 @@ public class Controller {
     log.info("adding note: " + title + "," + note);
     try {
       dao.addNote(title, note);
-      Note n = dao.getLast();
-      model.add(n);
+      model.clear();
+      model.add(dao.getLast());
+      frame.setSelected(0);
     } catch(Exception e) {
       log.error("could not add note", e);
     }

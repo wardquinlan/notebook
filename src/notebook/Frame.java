@@ -14,26 +14,30 @@ import javax.swing.border.EmptyBorder;
 
 public class Frame extends JFrame {
   private static final long serialVersionUID = 4319336198324776603L;
-  private JTextArea textArea = new JTextArea();
+  private JTable table;
+  private JTextArea textArea;
   
   public Frame(Controller controller, Model model) throws Exception {
     super("Notebook - " + System.getProperty("notebook.version"));
-    textArea.setEnabled(false);
-    textArea.setDisabledTextColor(Color.BLACK);
-    textArea.setBorder(new EmptyBorder(5, 5, 5, 5));
     
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     getContentPane().setLayout(new BorderLayout());
     
     add(new FilterPanel(controller), BorderLayout.NORTH);
     
-    JTable table = new Table(controller, model);
+    table = new Table(controller, model);
     JScrollPane scrollPane = new JScrollPane(table);
     scrollPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     splitPane.setDividerLocation((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.7));
     splitPane.setTopComponent(scrollPane);
+    
+    textArea = new JTextArea();
+    textArea.setEnabled(false);
+    textArea.setDisabledTextColor(Color.BLACK);
+    textArea.setBorder(new EmptyBorder(5, 5, 5, 5));
     splitPane.setBottomComponent(textArea);
+
     add(splitPane, BorderLayout.CENTER);
     
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -42,5 +46,9 @@ public class Frame extends JFrame {
   
   public void setNoteText(String text) {
     textArea.setText(text);
+  }
+  
+  public void setSelected(int index) {
+    table.setRowSelectionInterval(index, index);
   }
 }
