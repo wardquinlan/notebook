@@ -14,7 +14,7 @@ public class Controller {
   }
   
   public void search(String filter) {
-    log.info("searching with text " + filter);
+    log.info("searching: " + filter);
     try {
       model.set(dao.search(filter));
     } catch(Exception e) {
@@ -41,26 +41,9 @@ public class Controller {
   public void setModel(Model model) {
     this.model = model;
   }
-
-  public void add() {
-    new NoteDialog(frame, this);
-  }
-  
-  public void edit() {
-    
-  }
-  
-  public void delete(int id) {
-    try {
-      dao.delete(id);
-      model.delete(frame.getSelectedRow());
-    } catch(Exception e) {
-      log.error("could not delete", e);
-    }
-  }
   
   public void add(String title, String note) {
-    log.info("adding: " + title + "," + note);
+    log.info("adding: " + title);
     try {
       dao.add(title, note);
       model.clear();
@@ -68,6 +51,26 @@ public class Controller {
       frame.setSelectedRow(0);
     } catch(Exception e) {
       log.error("could not add", e);
+    }
+  }
+
+  public void edit(int id, String title, String text) {
+    log.info("editing: " + id + ", " + title);
+    try {
+      dao.edit(id, title, text);
+      model.edit(frame.getSelectedRow(), title, text);
+    } catch(Exception e) {
+      log.error("could not edit", e);
+    }
+  }
+  
+  public void delete(int id) {
+    log.info("deleting: " + id);
+    try {
+      dao.delete(id);
+      model.delete(frame.getSelectedRow());
+    } catch(Exception e) {
+      log.error("could not delete", e);
     }
   }
   

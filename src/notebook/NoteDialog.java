@@ -19,14 +19,21 @@ public class NoteDialog extends JDialog {
   private static final int WIDTH = 600;
   private static final int HEIGHT = 400;
 
-  public NoteDialog(JFrame frame, Controller controller) {
-    super(frame, "Add Note", true);
+  public NoteDialog(JFrame frame, Controller controller, Integer id, String title, String text) {
+    super(frame, "Note", true);
     setLayout(new BorderLayout());
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new BorderLayout());
-    JTextField title = new JTextField(20);
-    mainPanel.add(new LabeledComponent("Title", title), BorderLayout.NORTH);
+    JTextField titleField = new JTextField(20);
+    if (title != null) {
+      titleField.setText(title);
+      titleField.select(0, title.length());
+    }
+    mainPanel.add(new LabeledComponent("Title", titleField), BorderLayout.NORTH);
     JTextArea textArea = new JTextArea();
+    if (text != null) {
+      textArea.setText(text);
+    }
     mainPanel.add(new LabeledComponent("Note", textArea), BorderLayout.CENTER);
     mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(mainPanel, BorderLayout.CENTER);
@@ -35,11 +42,15 @@ public class NoteDialog extends JDialog {
     ok.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        if (title.getText().length() == 0) {
+        if (titleField.getText().length() == 0) {
           JOptionPane.showMessageDialog(frame, "A title is required", "Error", JOptionPane.ERROR_MESSAGE);
           return;
         }
-        controller.add(title.getText(), textArea.getText());
+        if (id == null) {
+          controller.add(titleField.getText(), textArea.getText());
+        } else {
+          controller.edit(id, titleField.getText(), textArea.getText());
+        }
         dispose();
       }
     });

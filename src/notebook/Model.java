@@ -36,11 +36,6 @@ public class Model extends DefaultTableModel {
     return list == null ? 0 : list.size();
   }
   
-  public void add(Note note) {
-    list.add(note);
-    fireTableDataChanged();
-  }
-  
   @Override
   public Object getValueAt(int row, int column) {
     Note note = list.get(row);
@@ -60,6 +55,18 @@ public class Model extends DefaultTableModel {
   @Override
   public int getColumnCount() {
     return 3;
+  }
+
+  public void add(Note note) {
+    list.add(note);
+    fireTableDataChanged();
+  }
+  
+  public void edit(int index, String title, String text) {
+    Note note = list.get(index);
+    note.setTitle(title);
+    note.setText(text);
+    fireTableDataChanged();
   }
   
   public void delete(int index) {

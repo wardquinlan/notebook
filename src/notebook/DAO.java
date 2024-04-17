@@ -53,13 +53,21 @@ public class DAO {
     // select * from notebook where UPPER(note) like UPPER('%myx%') or UPPER(title) like UPPER('%my%');
   }
   
-  public void add(String title, String note) throws Exception {
+  public void add(String title, String text) throws Exception {
     PreparedStatement ps = conn.prepareStatement("insert into notebook(ts, title, note) values(NOW(), ?, ?)");
     ps.setString(1, title);
-    ps.setString(2, note);
+    ps.setString(2, text);
     ps.executeUpdate();
   }
 
+  public void edit(int id, String title, String text) throws Exception {
+    PreparedStatement ps = conn.prepareStatement("update notebook set ts = NOW(), title = ?, note = ? where id = ?");
+    ps.setString(1, title);
+    ps.setString(2, text);
+    ps.setInt(3, id);
+    ps.executeUpdate();
+  }
+  
   public void delete(int id) throws Exception {
     PreparedStatement ps = conn.prepareStatement("delete from notebook where id = ?");
     ps.setInt(1, id);

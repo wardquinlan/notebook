@@ -42,7 +42,7 @@ public class FilterPanel extends JPanel {
     add.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        controller.add();
+        new NoteDialog(frame, controller, null, null, null);
       }
     });
     add(add);
@@ -51,7 +51,10 @@ public class FilterPanel extends JPanel {
     edit.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        controller.edit();
+        if (frame.getSelectedRow() != -1) {
+          Note note = model.get(frame.getSelectedRow());
+          new NoteDialog(frame, controller, note.getId(), note.getTitle(), note.getText());
+        }
       }
     });
     add(edit);
