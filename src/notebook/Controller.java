@@ -36,7 +36,6 @@ public class Controller {
       dao.add(title, note);
       model.clear();
       model.add(dao.getLast());
-      frame.setSelectedRow(0);
     } catch(Exception e) {
       log.error("could not add", e);
     }

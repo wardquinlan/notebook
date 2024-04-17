@@ -19,7 +19,7 @@ public class NoteDialog extends JDialog {
   private static final int WIDTH = 600;
   private static final int HEIGHT = 400;
 
-  public NoteDialog(JFrame frame, Controller controller, Integer id, String title, String text) {
+  public NoteDialog(Frame frame, Controller controller, Integer id, String title, String text) {
     super(frame, "Note", true);
     setLayout(new BorderLayout());
     JPanel mainPanel = new JPanel();
@@ -48,6 +48,7 @@ public class NoteDialog extends JDialog {
         }
         if (id == null) {
           controller.add(titleField.getText(), textArea.getText());
+          frame.setSelectedRow(0);
         } else {
           controller.edit(id, titleField.getText(), textArea.getText());
         }
