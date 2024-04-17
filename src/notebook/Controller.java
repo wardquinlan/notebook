@@ -13,8 +13,8 @@ public class Controller {
     this.dao = dao;
   }
   
-  public void applyFilter(String filter) {
-    log.info("applying filter with text " + filter);
+  public void search(String filter) {
+    log.info("searching with text " + filter);
   }
   
   public Frame getFrame() {

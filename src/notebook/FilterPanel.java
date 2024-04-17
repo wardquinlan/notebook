@@ -18,20 +18,20 @@ public class FilterPanel extends JPanel {
     JTextField filter = new JTextField(20);
     add(new LabeledComponent("Filter", filter));
     
-    JButton apply = new JButton("Apply");
-    apply.addActionListener(new ActionListener() {
+    JButton search = new JButton("Search");
+    search.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        controller.applyFilter(filter.getText());
+        controller.search(filter.getText());
       }
     });
-    add(apply);
+    add(search);
 
     JButton reset = new JButton("Reset");
     reset.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        controller.applyFilter("");
+        filter.setText("");
       }
     });
     add(reset);
