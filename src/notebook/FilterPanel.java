@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 public class FilterPanel extends JPanel {
   private static final long serialVersionUID = 306809055566658714L;
 
-  public FilterPanel(Frame frame, Controller controller) {
+  public FilterPanel(Frame frame, Controller controller, Model model) {
     super(new FlowLayout(FlowLayout.LEFT));
     
     //setBackground(new Color(0, 255, 0));
@@ -28,15 +28,15 @@ public class FilterPanel extends JPanel {
     });
     add(search);
 
-    JButton reset = new JButton("Reset");
-    reset.addActionListener(new ActionListener() {
+    JButton clear = new JButton("Clear");
+    clear.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         filter.setText("");
-        controller.reset();
+        controller.clear();
       }
     });
-    add(reset);
+    add(clear);
     
     JButton add = new JButton("Add");
     add.addActionListener(new ActionListener() {
@@ -62,10 +62,20 @@ public class FilterPanel extends JPanel {
       public void actionPerformed(ActionEvent e) {
         if (frame.getSelectedRow() != -1 &&
             JOptionPane.showConfirmDialog(frame, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-          controller.delete();
+          Note note = model.get(frame.getSelectedRow());
+          controller.delete(note.getId());
         }
       }
     });
     add(delete);
+
+    JButton exit = new JButton("Exit");
+    exit.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        System.exit(0);
+      }
+    });
+    add(exit);
   }
 }

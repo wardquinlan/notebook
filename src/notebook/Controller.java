@@ -22,7 +22,7 @@ public class Controller {
     }
   }
   
-  public void reset() {
+  public void clear() {
     model.clear();
   }
   
@@ -50,19 +50,24 @@ public class Controller {
     
   }
   
-  public void delete() {
-    model.delete(frame.getSelectedRow());
+  public void delete(int id) {
+    try {
+      dao.delete(id);
+      model.delete(frame.getSelectedRow());
+    } catch(Exception e) {
+      log.error("could not delete", e);
+    }
   }
   
   public void add(String title, String note) {
-    log.info("adding note: " + title + "," + note);
+    log.info("adding: " + title + "," + note);
     try {
-      dao.addNote(title, note);
+      dao.add(title, note);
       model.clear();
       model.add(dao.getLast());
       frame.setSelectedRow(0);
     } catch(Exception e) {
-      log.error("could not add note", e);
+      log.error("could not add", e);
     }
   }
   

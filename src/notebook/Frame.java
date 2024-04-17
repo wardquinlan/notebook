@@ -23,7 +23,7 @@ public class Frame extends JFrame {
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     getContentPane().setLayout(new BorderLayout());
     
-    add(new FilterPanel(this, controller), BorderLayout.NORTH);
+    add(new FilterPanel(this, controller, model), BorderLayout.NORTH);
     
     table = new Table(controller, model);
     JScrollPane scrollPane = new JScrollPane(table);
