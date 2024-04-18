@@ -36,8 +36,8 @@ public class Frame extends JFrame {
     textArea.setEnabled(false);
     textArea.setDisabledTextColor(Color.BLACK);
     textArea.setBorder(new EmptyBorder(5, 5, 5, 5));
-    splitPane.setBottomComponent(textArea);
-
+    splitPane.setBottomComponent(new JScrollPane(textArea));
+    
     add(splitPane, BorderLayout.CENTER);
     
     setSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -46,6 +46,7 @@ public class Frame extends JFrame {
 
   public void setText(String text) {
     textArea.setText(text);
+    textArea.setCaretPosition(0);
   }
   
   public int getSelectedRow() {

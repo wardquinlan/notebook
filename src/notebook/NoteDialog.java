@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -34,7 +34,7 @@ public class NoteDialog extends JDialog {
     if (text != null) {
       textArea.setText(text);
     }
-    mainPanel.add(new LabeledComponent("Note", textArea), BorderLayout.CENTER);
+    mainPanel.add(new JScrollPane(new LabeledComponent("Note", textArea)), BorderLayout.CENTER);
     mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(mainPanel, BorderLayout.CENTER);
     
