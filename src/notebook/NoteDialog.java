@@ -46,6 +46,10 @@ public class NoteDialog extends JDialog {
           JOptionPane.showMessageDialog(frame, "A title is required", "Error", JOptionPane.ERROR_MESSAGE);
           return;
         }
+        if (titleField.getText().length() > 100) {
+          JOptionPane.showMessageDialog(frame, "Title is too long (limit of 100 characters)", "Error", JOptionPane.ERROR_MESSAGE);
+          return;
+        }
         if (id == null) {
           controller.add(titleField.getText(), textArea.getText());
           frame.setSelectedRow(0);
