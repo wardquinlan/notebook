@@ -35,8 +35,7 @@ public class Frame extends JFrame {
     splitPane.setTopComponent(scrollPane);
     
     textArea = new JTextArea();
-    textArea.setEnabled(false);
-    textArea.setDisabledTextColor(Color.BLACK);
+    textArea.setEditable(false);
     textArea.setBorder(new EmptyBorder(5, 5, 5, 5));
     splitPane.setBottomComponent(new JScrollPane(textArea));
     
