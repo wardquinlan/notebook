@@ -1,5 +1,8 @@
 package notebook;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -11,7 +14,7 @@ public class Table extends JTable {
   private Frame frame;
   private Model model;
 
-  public Table(Frame frame, Model model) {
+  public Table(Frame frame, Controller controller, Model model) {
     super(model);
     this.frame = frame;
     this.model = model;
@@ -26,6 +29,16 @@ public class Table extends JTable {
     getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
     getColumnModel().getColumn(1).setPreferredWidth(200);
     getColumnModel().getColumn(1).setMaxWidth(200);
+    
+    addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        if (e.getClickCount() == 2) {
+          Note note = model.get(frame.getSelectedRow());
+          new NoteDialog(frame, controller, note.getId(), note.getTitle(), note.getText());
+        }
+      }
+    });
   }
   
   @Override
