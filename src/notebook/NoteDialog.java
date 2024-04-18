@@ -54,7 +54,9 @@ public class NoteDialog extends JDialog {
           controller.add(titleField.getText(), textArea.getText());
           frame.setSelectedRow(0);
         } else {
+          int row = frame.getSelectedRow();
           controller.edit(id, titleField.getText(), textArea.getText());
+          frame.setSelectedRow(row);
         }
         frame.requestFocus();
         dispose();
