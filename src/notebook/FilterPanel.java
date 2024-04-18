@@ -15,7 +15,6 @@ public class FilterPanel extends JPanel {
   public FilterPanel(Frame frame, Controller controller, Model model) {
     super(new FlowLayout(FlowLayout.LEFT));
     
-    //setBackground(new Color(0, 255, 0));
     JTextField filter = new JTextField(20);
     add(new LabeledComponent("Filter", filter));
     
