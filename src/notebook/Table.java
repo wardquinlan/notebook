@@ -1,9 +1,12 @@
 package notebook;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -36,6 +39,19 @@ public class Table extends JTable {
         if (e.getClickCount() == 2) {
           Note note = model.get(frame.getSelectedRow());
           new NoteDialog(frame, controller, note.getId(), note.getTitle(), note.getText());
+        }
+      }
+    });
+    
+    addKeyListener(new KeyAdapter() {
+      @Override
+      public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+          if (JOptionPane.showConfirmDialog(frame, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            Note note = model.get(frame.getSelectedRow());
+            controller.delete(note.getId());
+            frame.requestFocus();
+          }
         }
       }
     });

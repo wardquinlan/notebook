@@ -1,7 +1,6 @@
 package notebook;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -56,6 +55,7 @@ public class Frame extends JFrame {
 
   public void setSelectedRow(int index) {
     table.setRowSelectionInterval(index, index);
+    table.requestFocus();
   }
   
   public void requestFocus() {

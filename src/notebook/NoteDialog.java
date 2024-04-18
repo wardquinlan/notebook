@@ -27,7 +27,6 @@ public class NoteDialog extends JDialog {
     JTextField titleField = new JTextField(20);
     if (title != null) {
       titleField.setText(title);
-      titleField.select(0, title.length());
     }
     mainPanel.add(new LabeledComponent("Title", titleField), BorderLayout.NORTH);
     JTextArea textArea = new JTextArea();
@@ -58,7 +57,6 @@ public class NoteDialog extends JDialog {
           controller.edit(id, titleField.getText(), textArea.getText());
           frame.setSelectedRow(row);
         }
-        frame.requestFocus();
         dispose();
       }
     });
