@@ -34,7 +34,7 @@ public class NoteDialog extends JDialog {
     if (text != null) {
       textArea.setText(text);
     }
-    mainPanel.add(new JScrollPane(new LabeledComponent("Note", textArea)), BorderLayout.CENTER);
+    mainPanel.add(new LabeledComponent("Note", new JScrollPane(textArea)), BorderLayout.CENTER);
     mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(mainPanel, BorderLayout.CENTER);
     

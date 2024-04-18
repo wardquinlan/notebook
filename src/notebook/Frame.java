@@ -31,7 +31,7 @@ public class Frame extends JFrame {
     JScrollPane scrollPane = new JScrollPane(table);
     scrollPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    splitPane.setDividerLocation((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.7));
+    splitPane.setDividerLocation((int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.6));
     splitPane.setTopComponent(scrollPane);
     
     textArea = new JTextArea();
