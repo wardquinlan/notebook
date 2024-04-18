@@ -26,7 +26,7 @@ public class Controller {
     try {
       model.set(dao.search(filter));
     } catch(Exception e) {
-      log.error("could not search against filter", e);
+      log.error("could not search", e);
     }
   }
   
