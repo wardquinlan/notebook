@@ -11,11 +11,12 @@ import javax.swing.JTextField;
 
 public class FilterPanel extends JPanel {
   private static final long serialVersionUID = 306809055566658714L;
-
+  private JTextField filter;
+  
   public FilterPanel(Frame frame, Controller controller, Model model) {
     super(new FlowLayout(FlowLayout.LEFT));
     
-    JTextField filter = new JTextField(20);
+    filter = new JTextField(20);
     add(new LabeledComponent("Filter", filter));
     
     JButton search = new JButton("Search");
@@ -23,6 +24,7 @@ public class FilterPanel extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
         controller.search(filter.getText());
+        filter.requestFocus();
       }
     });
     add(search);
@@ -33,6 +35,7 @@ public class FilterPanel extends JPanel {
       public void actionPerformed(ActionEvent e) {
         filter.setText("");
         model.clear();
+        filter.requestFocus();
       }
     });
     add(clear);
@@ -66,6 +69,7 @@ public class FilterPanel extends JPanel {
             JOptionPane.showConfirmDialog(frame, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
           Note note = model.get(frame.getSelectedRow());
           controller.delete(note.getId());
+          filter.requestFocus();
         }
       }
     });
@@ -79,5 +83,9 @@ public class FilterPanel extends JPanel {
       }
     });
     add(exit);
+  }
+  
+  public void requestFocus() {
+    filter.requestFocus();
   }
 }

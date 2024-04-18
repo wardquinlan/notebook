@@ -52,6 +52,7 @@ public class NoteDialog extends JDialog {
         } else {
           controller.edit(id, titleField.getText(), textArea.getText());
         }
+        frame.requestFocus();
         dispose();
       }
     });
@@ -60,6 +61,7 @@ public class NoteDialog extends JDialog {
     cancel.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        frame.requestFocus();
         dispose();
       }
     });

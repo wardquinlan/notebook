@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Frame extends JFrame {
   private static final long serialVersionUID = 4319336198324776603L;
+  private FilterPanel filterPanel;
   private JTable table;
   private JTextArea textArea;
   
@@ -23,7 +24,8 @@ public class Frame extends JFrame {
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     getContentPane().setLayout(new BorderLayout());
     
-    add(new FilterPanel(this, controller, model), BorderLayout.NORTH);
+    filterPanel = new FilterPanel(this, controller, model);
+    add(filterPanel, BorderLayout.NORTH);
     
     table = new Table(this, model);
     JScrollPane scrollPane = new JScrollPane(table);
@@ -55,5 +57,9 @@ public class Frame extends JFrame {
 
   public void setSelectedRow(int index) {
     table.setRowSelectionInterval(index, index);
+  }
+  
+  public void requestFocus() {
+    filterPanel.requestFocus();
   }
 }
