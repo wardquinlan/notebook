@@ -10,6 +10,5 @@ CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/notebook.jar
 CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/log4j-1.2.14.jar
 CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/commons-logging-1.1.jar
 CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/postgresql-42.5.4.jar
-CLASSPATH=$CLASSPATH:$NB_HOME/notebook.d/commons-cli-1.4.jar
 CMD="$JAVA_HOME/bin/java -classpath $CLASSPATH -Xmx256m $JAVA_OPTS notebook.Main $@"
 $CMD
