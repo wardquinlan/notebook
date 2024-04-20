@@ -65,11 +65,12 @@ public class FilterPanel extends JPanel {
     delete.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        if (frame.getSelectedRow() != -1 &&
-            JOptionPane.showConfirmDialog(frame, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (frame.getSelectedRow() != -1) {
           Note note = model.get(frame.getSelectedRow());
-          controller.delete(note.getId());
-          filter.requestFocus();
+          if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete '" + note.getTitle() + "'?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            controller.delete(note.getId());
+            filter.requestFocus();
+          }
         }
       }
     });

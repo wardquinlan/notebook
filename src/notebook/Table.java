@@ -47,8 +47,8 @@ public class Table extends JTable {
       @Override
       public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DELETE) {
-          if (JOptionPane.showConfirmDialog(frame, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            Note note = model.get(frame.getSelectedRow());
+          Note note = model.get(frame.getSelectedRow());
+          if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete '" + note.getTitle() + "'?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             controller.delete(note.getId());
             frame.requestFocus();
           }
